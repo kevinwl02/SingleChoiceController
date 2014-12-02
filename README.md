@@ -13,6 +13,15 @@ Save yourself all the boilerplate code and create your pickers faster.
 * Create single choice pickers with default styles
 * Create single choice pickers with custom cells
 
+##Getting started
+
+SCC is available on [CocoaPods](http://cocoapods.org).
+In your `podfile` add:
+
+```ruby
+pod 'SingleChoiceController', '~> 0.0.1'
+```
+
 ##Usage
 
 You can create the picker with either default or custom cells.
@@ -20,7 +29,8 @@ You can create the picker with either default or custom cells.
 For default cells:
 
 ```obj-c
-SCCSingleChoiceTableViewController *singleChoiceController = [SCCSingleChoiceTableViewController singleChoiceControllerWithChoices:@[@"choice", @"choice2", @"choice3"] titleForChoice:^NSString *(id choice, NSInteger index) {
+SCCSingleChoiceTableViewController *singleChoiceController = [SCCSingleChoiceTableViewController singleChoiceControllerWithChoices:@[@"choice", @"choice2", @"choice3"]
+titleForChoice:^NSString *(id choice, NSInteger index) {
         return choice;
     }];
 ```
@@ -30,13 +40,18 @@ In here you specify the objects to be mapped to the cells. It can be any type of
 To create with custom cells:
 
 ```obj-c
-SCCSingleChoiceTableViewController *singleChoiceController = [SCCSingleChoiceTableViewController singleChoiceControllerWithChoices:[self exampleData] cellNib:[UINib nibWithNibName:@"CustomCell" bundle:nil] cellHeight:80 customSetup:^(UITableViewCell *cell, id choice, NSInteger index, BOOL isSelected) {
+SCCSingleChoiceTableViewController *singleChoiceController = [SCCSingleChoiceTableViewController singleChoiceControllerWithChoices:[self exampleData] 
+cellNib:[UINib nibWithNibName:@"CustomCell" bundle:nil] 
+cellHeight:80 
+customSetup:^(UITableViewCell *cell, id choice, NSInteger index, BOOL isSelected) {
         
         // Configure your custom cell
     }];
 ```
 
 In case of custom cells, additionally to your objects source, you need to send the `UINib` object for your cell, a custom height and configure the cell inside the configuration block. In this case, the `isSelected` value is sent to the configuration block so that you can configure the cell's visual state for when a cell is currently selected.
+
+Check the example's source code for a custom cell picker implementation.
 
 ##Author
 
