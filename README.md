@@ -51,6 +51,20 @@ customSetup:^(UITableViewCell *cell, id choice, NSInteger index, BOOL isSelected
 
 In case of custom cells, additionally to your objects source, you need to send the `UINib` object for your cell, a custom height and configure the cell inside the configuration block. In this case, the `isSelected` value is sent to the configuration block so that you can configure the cell's visual state for when a cell is currently selected.
 
+###Listening to selection events
+
+To receive notifications when an item is selected, implement the `SCCSingleChoiceDelegate` protocol and set the delegate in the `SCCSingleChoiceTableViewController` object:
+
+```obj-c
+singleChoiceController.singleChoiceDelegate = self
+```
+
+Then implement this method:
+
+```obj-c
+- (void)singleChoiceSelectedChoice:(id)choice atIndex:(NSInteger)index;
+```
+
 Check the example's source code for a custom cell picker implementation.
 
 ##Author
